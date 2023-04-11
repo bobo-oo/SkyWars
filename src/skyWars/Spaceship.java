@@ -3,6 +3,9 @@ package skyWars;
 import java.io.Serializable;
 
 public abstract class Spaceship implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
 	private int spaceshipTypeId;
 	private String spaceshipName;
 
@@ -22,7 +25,7 @@ public abstract class Spaceship implements Serializable {
 	}
 	
 	public int getSpaceshipPositionY() {
-		return this.positionX;
+		return this.positionY;
 	}
 	
 	public void setSpaceshipPositionX(int x) {

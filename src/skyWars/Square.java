@@ -1,8 +1,11 @@
 package skyWars;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Square {
+public class Square implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	private ArrayList<Spaceship> spaceships = new ArrayList<>();
 	private int number;

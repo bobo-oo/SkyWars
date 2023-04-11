@@ -1,9 +1,12 @@
 package skyWars;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Grid {
+public class Grid implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	private ArrayList<Row> theRows = new ArrayList<>();
 	private static final int NUMBER_OF_ROWS = 4;
 	
@@ -58,6 +61,16 @@ public class Grid {
 			}
 		}
 	}
+	
+	public void moveSpaceship(Spaceship spaceship, int newRow, int newSquare) {
+		int currentRow = spaceship.getSpaceshipPositionY();
+	    int currentSquare = spaceship.getSpaceshipPositionX();
+	    // Remove spaceship from current square
+	    removeSpaceship(spaceship, currentRow, currentSquare);
+	    // Add spaceship to new square
+	    addShip(spaceship, newRow, newSquare);
+	    System.out.println("Spaceship moved successfully.");
+	}
 
 	public ArrayList<Spaceship> getCurrentSpaceships(int row, int square) {
 		for (Row tempRow : this.theRows) {
@@ -77,7 +90,6 @@ public class Grid {
         if (newRow < 0 || newRow >= NUMBER_OF_ROWS || newCol < 0 || newCol >= NUMBER_OF_ROWS) {
             return false;
         }
-
         // Check if new position is a valid neighbour of current position
         int rowDiff = Math.abs(newRow - currentRow);
         int colDiff = Math.abs(newCol - currentCol);
